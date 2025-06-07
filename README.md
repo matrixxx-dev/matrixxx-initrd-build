@@ -1,8 +1,9 @@
 # matrixxx-initrd-build
 - This repository is primarily a shell script collection to generate a special
   initramfs for matrixxx (a D.I.Y linux live system)
-  - scripts to generate a customized busybox
-  - scripts to generate a customized initramfs (regardless of the kernel used)
+  - scripts to generate a **customized busybox**
+  - scripts to generate a **customized initramfs**
+    (regardless of the kernel used)
 - The result is an initramfs in the form of a gzip cpio file that can be
   started by the Linux kernel and can be controlled via kernel parameters
   - Including a 32-bit busybox executable with associated file structure
@@ -13,9 +14,8 @@
       - consisting of a variety of writing-protected images (type of squasfs)
         and a layer above, which can be written
   - Furthermore, this initramfs is designed for (simple) remastering
-
-### briefly about the matrixxx project:
-- see [readme: matrixxx.md](./doc/readme-matrixxx.md)
+- Briefly description about the **matrixxx project**:
+  see [readme: matrixxx.md](./doc/readme-matrixxx.md)
 
 <!--
 ### briefly about the initrd-build process and usage:
@@ -34,10 +34,6 @@
 - dir:
   **[01-scripts-build-initrd-busybox](#build-initrd-busybox)**
   - contains the scripts for busybox build
-
-> [!CAUTION]
-> The copilation of busybox does not work with any kernel!
-
 - dir:
   **[02-scripts-build-initrd](#build-initrd)**
   - contains the scripts for initrd (resp. initramfs) build
@@ -63,6 +59,9 @@
 
 ********************************************************************************
 #### Content of '01-scripts-build-initrd-busybox': {#build-initrd-busybox}
+> [!CAUTION]
+> The copilation of busybox does not work with any kernel!
+
 - **00-script-get-busybox-repository.sh**
   - generates the basic output directory where the Git repository will be stored
 - **00-script-set-busybox-repository-default.sh**
@@ -115,22 +114,5 @@
   - global defines; included in all scripts
 
 ********************************************************************************
-********************************************************************************
-# Only for 'GitHub Flavored Markdown' test:
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-> [!TIP]
-> Helpful advice for doing things better or more easily.
-
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
 
 

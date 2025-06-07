@@ -58,7 +58,7 @@
   - *briefly description about the matrixxx-initrd-build.git* (this file)
 
 ********************************************************************************
-#### Content of '01-scripts-build-initrd-busybox': {#build-initrd-busybox}
+#### Content of '01-scripts-build-initrd-busybox': <a name="build-initrd-busybox"/>
 > [!CAUTION]
 > The copilation of busybox does not work with any kernel!
 
@@ -85,7 +85,7 @@
   - Complete busybox build process (with the default configuration)
 
 ********************************************************************************
-#### Content of '02-scripts-build-initrd': {#build-initrd}
+#### Content of '02-scripts-build-initrd': <a name="build-initrd"/>
 - **01-script-set-working-link.sh**
   - generates the basic output directory in which a working directory is created
     (consisting of the parts of dir: archives)
@@ -101,7 +101,7 @@
 - script-del-working-link.sh
 
 ********************************************************************************
-#### Content of 'scripts-extract-initrd': {#extract-initrd}
+#### Content of 'scripts-extract-initrd': <a name="extract-initrd"/>
 - dir: originals
   - Copy initramfs here that should be unpacked (example available)
 - **01-script-extract_InitRD.sh**

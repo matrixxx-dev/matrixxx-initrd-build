@@ -1,0 +1,71 @@
+#!/bin/bash
+
+## ########################################################################## ##
+##
+## init
+##
+## ########################################################################## ##
+## includes
+. ../lib/func_script-handling
+
+## -------------------------------------------------------------------------- ##
+## DEFINITIONS:
+## -------------------------------------------------------------------------- ##
+CALLEE="false"
+
+BUILD_DIR="../build-initrd-busybox"
+BUSYBOX_GIT_REPOSITORY_NAME="busybox.git"
+TRANSCRIPTION_FILE="${BUILD_DIR}/obj/transcription.txt"
+
+## Select TAR compression:
+##  -j, --bzip2                     bzip2 archive
+##  -J, --xz                        xz archive
+##  --lzip                          lzip archive
+##  --lzma                          lzma archive
+##  --lzop                          lzop archive
+##  -z, --gzip, --gunzip, --ungzip  gzip archive
+##  -Z, --compress, --uncompress    compress archive
+##  --zstd                          zstd archive
+
+#TAR_COMPRESSION="bzip2"
+TAR_COMPRESSION="xz"
+#TAR_COMPRESSION="lzip"
+#TAR_COMPRESSION="lzma"
+#TAR_COMPRESSION="lzop"
+#TAR_COMPRESSION="gzip"
+#TAR_COMPRESSION="zstd"
+
+## -------------------------------------------------------------------------- ##
+## FUNCTIONS:
+## -------------------------------------------------------------------------- ##
+## Set global DESTINATION="obj/busybox-x86-v${version}" variable
+## and build directories + info
+func_set_and_mk_DESTINATION(){ # git_repository="$1"
+  local git_repository git_branch version_array version i number
+  git_repository="$1"
+
+  git_branch=$(cat ./"${git_repository}"/.git/HEAD)
+  git_branch="${git_branch//*\//}"
+
+  readarray -t version_array < <(head -n6 ./"${git_repository}"/Makefile)
+
+  version=""
+  for i in "${!version_array[@]}"; do
+    #echo "element: ${version_array[i]}"
+    number="${version_array[i]//*= /}"
+    #echo "number: ${number}"
+    [[ "${version_array[i]}" =~ ^VERSION.* ]] ||\
+    [[ "${version_array[i]}" =~ ^PATCHLEVEL* ]] ||\
+    [[ "${version_array[i]}" =~ ^SUBLEVEL* ]] \
+      && version="${version}${number}."
+  done
+
+  DESTINATION="obj/busybox-x86-v${version}"
+  [ -d "${DESTINATION}" ] || mkdir -pv "${DESTINATION}"
+
+  echo "git_branch: ${git_branch}" > obj/git-branch-v"${version}"
+  echo "version: ${version}" >> obj/git-branch-v"${version}"
+}
+
+## ########################################################################## ##
+

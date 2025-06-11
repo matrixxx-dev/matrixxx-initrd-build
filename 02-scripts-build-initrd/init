@@ -1,0 +1,65 @@
+#! /bin/bash
+
+## ########################################################################## ##
+##
+## init
+##
+## ########################################################################## ##
+## includes
+. ../lib/func_script-handling
+
+## -------------------------------------------------------------------------- ##
+## DEFINITIONS:
+## -------------------------------------------------------------------------- ##
+CALLEE="false"
+
+## Select name
+RD_DIR_NAME="matrixxx-1.0"
+PREFIX="working-"
+
+## -------------------------------------------------------------------------- ##
+INITRD_BASE="initrd-${RD_DIR_NAME}_base"
+INITRD_BUSYBOX="busybox-install"
+INITRD_INIT="initrd-matrixxx"
+
+## -------------------------------------------------------------------------- ##
+BUILD_DIR="../build-initrd"
+GIT_REPOSITORY_NAME="initrd-matrixxx.git"
+
+## -------------------------------------------------------------------------- ##
+#EXTRACT_DIR="InitialRD"
+EXTRACT_DIR="main"
+SAVE_DIR="new"
+WORKING_LINK_DIR="working"
+
+## -------------------------------------------------------------------------- ##
+## Directory: $WORKING_DIR_NAME
+WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}"
+
+## -------------------------------------------------------------------------- ##
+## Select name initramfs image name
+#RD_FILE_TYP="minirt"      # KNOPPIX
+RD_FILE_TYP="initrd"      # matrixxx, DEBIAN, UBUNTU ...
+
+## -------------------------------------------------------------------------- ##
+## Select TAR compression:
+##  -j, --bzip2                     bzip2 archive
+##  -J, --xz                        xz archive
+##  --lzip                          lzip archive
+##  --lzma                          lzma archive
+##  --lzop                          lzop archive
+##  -z, --gzip, --gunzip, --ungzip  gzip archive
+##  -Z, --compress, --uncompress    compress archive
+##  --zstd                          zstd archive
+
+#TAR_COMPRESSION="bzip2"
+TAR_COMPRESSION="xz"
+#TAR_COMPRESSION="lzip"
+#TAR_COMPRESSION="lzma"
+#TAR_COMPRESSION="lzop"
+#TAR_COMPRESSION="gzip"
+#TAR_COMPRESSION="zstd"
+
+
+
+## ########################################################################## ##

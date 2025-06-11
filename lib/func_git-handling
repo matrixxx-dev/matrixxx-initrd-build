@@ -1,0 +1,42 @@
+#!/bin/bash
+
+## ########################################################################## ##
+## functions for git handling:
+##
+## ########################################################################## ##
+export FUNC_GIT_HANDLING="true"
+
+## globals:
+WORKING_BRANCH_PREFIX="my-"
+
+## -------------------------------------------------------------------------- ##
+## FUNCTIONS:
+## -------------------------------------------------------------------------- ##
+func_git_fetch(){
+  git fetch
+}
+
+func_git_pull(){
+  git stash                                                 ## save chages
+  git pull                                                  ## fetch & merge
+}
+
+func_git_switch_to_working_branch(){ # release_tag="$1"
+  local release_tag working_branch
+  release_tag="$1"; working_branch="$WORKING_BRANCH_PREFIX$1"
+
+  if git branch --list | grep "${working_branch}" >/dev/null 2>&1; then
+    echo "- switch to ${working_branch}"
+    git switch "${working_branch}"
+  else
+    echo "- generate & switch to ${working_branch}"
+    git switch -c "${working_branch}" "${release_tag}"
+  fi
+}
+
+func_git_switch_to_branch(){ # branch="$1"
+  git switch "$1"
+}
+
+## ########################################################################## ##
+

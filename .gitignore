@@ -1,5 +1,4 @@
 build-initrd
 build-initrd-busybox
 extract-initrd
-extract-initrd_cpio
 pandoc

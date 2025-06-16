@@ -19,7 +19,7 @@ func_change_to_dir "${BUILD_DIR}"
 
 ## generate local busybox git repository
 ## - MAIN_BRANCH="master"
-git clone git://git.busybox.net/busybox "${BUSYBOX_GIT_REPOSITORY_NAME}"
+git clone "${REMOTE_URL}" "${GIT_REPOSITORY_NAME}"
 
 ## -------------------------------------------------------------------------- ##
 ## pause:

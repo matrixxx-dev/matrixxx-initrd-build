@@ -47,7 +47,7 @@ func_pack_busybox(){ # src_path="$1" dest_path="$2" comp_type="$3"
 func_change_to_dir "${BUILD_DIR}"
 
 ## set and mkdir DESTINATION="obj/busybox-x86-v${version}"
-func_set_and_mk_DESTINATION "${BUSYBOX_GIT_REPOSITORY_NAME}"
+func_set_and_mk_DESTINATION "${GIT_REPOSITORY_NAME}"
 
 ## generate a busybox tar archive
 func_pack_busybox "${DESTINATION}/_install" "busybox-install" "${TAR_COMPRESSION}"

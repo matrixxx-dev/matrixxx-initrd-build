@@ -11,9 +11,6 @@
 
 ## defines:
 CALLEE="$1"
-RELEASE_BRANCH="1_37_stable"
-#RELEASE_TAG="1_37_0"                  ## useful to generate a working branch
-#                                      ## - if local changes are necessary
 
 ## -------------------------------------------------------------------------- ##
 ## MAIN:
@@ -21,8 +18,8 @@ RELEASE_BRANCH="1_37_stable"
 ## change to build directory
 func_change_to_dir "${BUILD_DIR}"
 
-## set local busybox git repository to default
-cd busybox.git || exit 1
+## set local git repository to default
+cd "${GIT_REPOSITORY_NAME}"b || exit 1
 func_git_fetch
 func_git_switch_to_branch "${RELEASE_BRANCH}"
 

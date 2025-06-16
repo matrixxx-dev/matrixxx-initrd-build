@@ -86,11 +86,11 @@ func_generate_busybox_structure(){
 func_change_to_dir "${BUILD_DIR}"
 
 ## set and mkdir DESTINATION="obj/busybox-x86-v${version}"
-func_set_and_mk_DESTINATION "${BUSYBOX_GIT_REPOSITORY_NAME}"
+func_set_and_mk_DESTINATION "${GIT_REPOSITORY_NAME}"
 
 ## build a busybox
 DESTINATION="../${DESTINATION}"
-func_configure_busybox "${BUSYBOX_GIT_REPOSITORY_NAME}" "${DESTINATION}" \
+func_configure_busybox "${GIT_REPOSITORY_NAME}" "${DESTINATION}" \
   && func_adapt_config_file "${DESTINATION}/.config" \
   && func_build_busybox "${DESTINATION}" \
   && func_generate_busybox_structure

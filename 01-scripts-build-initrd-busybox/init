@@ -14,9 +14,17 @@
 CALLEE="false"
 
 BUILD_DIR="../build-initrd-busybox"
-BUSYBOX_GIT_REPOSITORY_NAME="busybox.git"
+REMOTE_URL="git://git.busybox.net/busybox"
+GIT_REPOSITORY_NAME="busybox.git"
+
+## set default branch:
+RELEASE_BRANCH="1_37_stable"
+#RELEASE_TAG="1_37_0"                  ## useful to generate a working branch
+#                                      ## - if local changes are necessary
+
 TRANSCRIPTION_FILE="${BUILD_DIR}/obj/transcription.txt"
 
+## -------------------------------------------------------------------------- ##
 ## Select TAR compression:
 ##  -j, --bzip2                     bzip2 archive
 ##  -J, --xz                        xz archive

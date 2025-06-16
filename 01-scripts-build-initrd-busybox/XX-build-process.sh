@@ -14,7 +14,7 @@ CALL="true"
 ## -------------------------------------------------------------------------- ##
 ## MAIN:
 ## -------------------------------------------------------------------------- ##
-[ -d "${BUILD_DIR}"/"${BUSYBOX_GIT_REPOSITORY_NAME}" ] \
+[ -d "${BUILD_DIR}"/"${GIT_REPOSITORY_NAME}" ] \
   || ./00-script-get-busybox-repository.sh "$CALL"
 
 ./00-script-set-busybox-repository-default.sh "$CALL"

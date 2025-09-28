@@ -122,7 +122,7 @@
   - global defines; included in all scripts
 
 ##### example:
-- Use 02-scripts-build-initrd' to build a compressed cpio archive
+- Use **'02-scripts-build-initrd'** to build a compressed cpio archive
   (step 00 - 02)
 - copy result from directory 'new' to 'originals/matrixxx-1.1'
 - adapt init by uncomment "matrixxx-1.1/initrd.gz"

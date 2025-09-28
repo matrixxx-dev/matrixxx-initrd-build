@@ -100,7 +100,8 @@
 - **01-script-set-working-link.sh**
   - create a working link to working directory
 - **02-script-build_InitalRD.sh**
-  - actual build of the initramfs (directory new contains the output)
+  - actual build of the initramfs - a cpio archive (compressed with gzip)
+    (directory 'new' contains the output)
 - **03-script-store-working-dir.sh**
   - create TAR files for update the archive directory
     (splited versions of current release version)
@@ -113,12 +114,19 @@
 ********************************************************************************
 #### Content of 'scripts-extract-initrd': <a name="extract-initrd"/>
 - **[dir]** originals
-  - Copy initramfs here that should be unpacked (example available)
+  - Copy initramfs here that should be unpacked
 - **01-script-extract_InitRD.sh**
   - generates the basic output directory in which the initramfs should be
     extracted (corresponding configuration in init)
 - init
   - global defines; included in all scripts
+
+##### example:
+- Use 02-scripts-build-initrd' to build a compressed cpio archive
+  (step 00 - 02)
+- copy result from directory 'new' to 'originals/matrixxx-1.1'
+- adapt init by uncomment "matrixxx-1.1/initrd.gz"
+- now you find the uncompressed version under 'extract-initrd/matrixxx-1.1'
 
 ********************************************************************************
 

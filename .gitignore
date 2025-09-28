@@ -1,4 +1,6 @@
+_backup
 build-initrd
 build-initrd-busybox
 extract-initrd
 pandoc
+./scripts-extract-initrd/originals/matrixxx-1.1/.gitkeep

@@ -14,8 +14,14 @@
 CALLEE="false"
 
 ## Select name
-RD_DIR_NAME="matrixxx-1.0"
+#RD_DIR_NAME="matrixxx-1.0"
+RD_DIR_NAME="matrixxx-1.1"
 PREFIX="working-"
+
+## Directory: $WORKING_DIR_NAME
+#WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}"
+WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}.1"
+#WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}.2"
 
 ## -------------------------------------------------------------------------- ##
 INITRD_BASE="initrd-${RD_DIR_NAME}_base"
@@ -31,10 +37,6 @@ GIT_REPOSITORY_NAME="initrd-matrixxx.git"
 EXTRACT_DIR="main"
 SAVE_DIR="new"
 WORKING_LINK_DIR="working"
-
-## -------------------------------------------------------------------------- ##
-## Directory: $WORKING_DIR_NAME
-WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}"
 
 ## -------------------------------------------------------------------------- ##
 ## Select name initramfs image name
@@ -59,7 +61,5 @@ TAR_COMPRESSION="xz"
 #TAR_COMPRESSION="lzop"
 #TAR_COMPRESSION="gzip"
 #TAR_COMPRESSION="zstd"
-
-
 
 ## ########################################################################## ##

@@ -12,7 +12,7 @@
 ORIGINALS_PATH="originals"
 
 ORIGINALS=(
-"matrixxx-1.0/initrd.gz"
+#"matrixxx-1.1/initrd.gz"
 )
 
 EXTRACT_DIR="../extract-initrd"

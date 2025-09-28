@@ -63,6 +63,12 @@
 > The current version of BusyBox was created with a matrixxx
 > specific **32bit kernel of version 6.7.5**
 
+> [!TIP]
+> To find a new version use **00-script-get-busybox-repository.sh** and
+> check 'git branch -a'. If you found a new version you can adapt
+> RELEASE_BRANCH="1_37_stable" in ./init to generate this new version.
+> Otherwise jump to [02-scripts-build-initrd](#build-initrd)
+
 - **00-script-get-busybox-repository.sh**
   - generates the basic output directory where the Git repository will be stored
 - **00-script-set-busybox-repository-default.sh**
@@ -90,6 +96,7 @@
 - **00-script-build-working-dir.sh**
   - generates the basic output directory in which a working directory is created
   - unpacking the TAR files from archives directory in the working directory
+    [busybox '1_37_stable' is included]
 - **01-script-set-working-link.sh**
   - create a working link to working directory
 - **02-script-build_InitalRD.sh**

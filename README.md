@@ -1,3 +1,8 @@
+---
+defaults: github-markdown
+toc: false
+---
+<!-- *********************************************************************** -->
 # matrixxx-initrd-build
 - This repository is primarily a shell script collection to generate a special
   initramfs for matrixxx (a D.I.Y linux live system)
@@ -14,13 +19,12 @@
       - consisting of a variety of writing-protected images (type of squasfs)
         and a layer above, which can be written
   - Furthermore, this initramfs is designed for (simple) remastering
-- Briefly description about the **matrixxx project**:
-  see [readme: matrixxx.md](./doc/readme-matrixxx.md)
 
+#### briefly:
+- see [readme: about][]
 <!--
-### briefly about the initrd-build process and usage:
-- see [readme: initrd-build process](./doc/readme-process.md)
-- see [readme: usage](./doc/readme-usage.md)
+- see [readme: process][]
+- see [readme: usage][]
 -->
 
 #### links:
@@ -28,6 +32,9 @@
 
 <!-- *********************************************************************** -->
 [busybox]: https://www.busybox.net/
+[readme: about]: doc/readme-matrixxx.md
+[readme: process]: doc/readme-process.md
+[readme: usage]: doc/readme-usage.md
 
 ********************************************************************************
 ### Content of matrixxx-initrd-build.git:

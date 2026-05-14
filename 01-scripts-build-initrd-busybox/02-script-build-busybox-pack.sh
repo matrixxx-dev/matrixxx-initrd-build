@@ -14,15 +14,20 @@ CALLEE="$1"
 ## -------------------------------------------------------------------------- ##
 ## FUNCTIONS:
 ## -------------------------------------------------------------------------- ##
-func_pack_busybox(){ # src_path="$1" dest_path="$2" comp_type="$3"
+func_pack_busybox(){ # src_path="$1" output_path="$2" comp_type="$3"
   local src_path dest_path tar_file_name
-  src_path="$1"; dest_path="$2"; comp_type="$3"
+  src_path="$1"; output_path="$2"; comp_type="$3"
 
   ## remove destination directory if present
-  [ -d "${dest_path}" ] && sudo rm -rf "${dest_path}"
+  [ -d "${output_path}" ] && sudo rm -rf "${output_path}"
+
+  ## adapt dest_path
+  dest_path="${output_path}/main"
+  #dest_path="${output_path}"
+  [ -d "${dest_path}" ] || sudo mkdir -p "${dest_path}"
 
   ## copy source path to destination path
-  sudo cp -rf "${src_path}" "${dest_path}"
+  sudo cp -rf "${src_path}/." "${dest_path}/"
 
   ## adapt destination
   sudo rm -f "${dest_path}"/linuxrc
@@ -32,12 +37,13 @@ func_pack_busybox(){ # src_path="$1" dest_path="$2" comp_type="$3"
   tree "${dest_path}" | sudo tee "${dest_path}"/bin/busybox-tree.txt
 
   ## create archiv
-  tar_file_name="$(basename "${dest_path}").tar"
+  tar_file_name="$(basename "${output_path}").tar"
   [ -d "${tar_file_name}.${comp_type}" ] \
     && sudo rm -f "${tar_file_name}.${comp_type}"
-
   func_tar_create_archiv "${dest_path}" "${tar_file_name}" "${comp_type}"
-  [ -d "${dest_path}" ] && sudo rm -rf "${dest_path}"
+
+  ## remove temp directory
+  [ -d "${output_path}" ] && sudo rm -rf "${output_path}"
 }
 
 ## -------------------------------------------------------------------------- ##

@@ -14,8 +14,10 @@ CALLEE="true"
 ## -------------------------------------------------------------------------- ##
 ## MAIN:
 ## -------------------------------------------------------------------------- ##
+echo "TODO: Include usage of musl and/or uclibc"
+
 ## change to build directory
-func_change_to_dir "${BUILD_DIR}"
+#func_change_to_dir "${BUILD_DIR}"
 
 ## home page: https://musl.libc.org/
 ## online git: https://git.musl-libc.org/cgit/musl

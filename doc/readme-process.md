@@ -1,3 +1,0 @@
-# initrd-build process
-## TODO
-

@@ -11,7 +11,7 @@
 ## defines:
 CALLEE="true"
 
-CONFIG_LIST=(
+CONFIG_LIST_ACTIVATE=(
 ## necessary:
 CONFIG_STATIC
 ## add-on:
@@ -33,6 +33,16 @@ CONFIG_ASH_BASH_SOURCE_CURDIR
 CONFIG_HUSH_BASH_SOURCE_CURDIR
 )
 
+## Busybox fails to build with linux kernels >= 6.8
+## https://lists.busybox.net/pipermail/busybox-cvs/2024-January/041752.html
+## - Linux kernel 6.8 removed a number of traffic control related symbols from
+##   include/uapi/linux/pkt_sched.h
+## - Temporary workaround: remove tc from the build with:
+##   # CONFIG_TC is not defined
+CONFIG_LIST_DEACTIVATE=(
+CONFIG_TC
+)
+
 ## -------------------------------------------------------------------------- ##
 ## FUNCTIONS:
 ## -------------------------------------------------------------------------- ##
@@ -52,11 +62,16 @@ func_adapt_config_file(){ # config_file="$1"
 
   echo "config_file: ${config_file}"
   echo "activated values:"
-  cp
-  for element in "${CONFIG_LIST[@]}"
+  for element in "${CONFIG_LIST_ACTIVATE[@]}"
   do
     echo "  - ${element}"
     sed -i "s/# ${element} is not set/${element}=y/g" "${config_file}"
+  done
+  echo "deactivated values:"
+  for element in "${CONFIG_LIST_DEACTIVATE[@]}"
+  do
+    echo "  - ${element}"
+    sed -i "s/${element}=y/# ${element} is not set/g" "${config_file}"
   done
 }
 

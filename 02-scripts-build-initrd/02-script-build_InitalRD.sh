@@ -15,16 +15,17 @@ func_process(){ # input_path="$1"; output_path="$2"; file_name="$3"
   local output_path input_path file_name
   input_path="$1"; output_path=$(realpath "$2"); file_name="$3"
 
-  local current_path archive_typ output_file log_file info array file
+  local current_path archive_typ output_file log_file version info array file
   current_path="$PWD"
   archive_typ="gz"; output_file="${file_name}.${archive_typ}"
   log_file="${file_name}.sha256"
-
+  version=$(cat ./"${input_path}"/initramfs_version)
   info=$(realpath ./"${input_path}"); info="${info//*build-initrd\//}"
 
   ## generate output directory if neccessary
   [ -d "${output_path}" ] || mkdir -p "${output_path}"
 
+  ## ################################
   ## jump in resp. directory and build cpio file and pack with gzip
   cd "${input_path}" || exit 1
   { sudo find . | sudo cpio -oH newc | sudo gzip -9; } > "${output_path}/${output_file}"
@@ -33,14 +34,17 @@ func_process(){ # input_path="$1"; output_path="$2"; file_name="$3"
   cd "${output_path}" || exit 1
   readarray -t array < <(find ./ -name "*.${archive_typ}")
   {
-    echo "# Inital Ram Disk versions: ${info}"
+    echo "# Inital Ram Disk:"
+    echo "- path: ${info}"
+    echo "- version: ${version}"
+    echo "- sha256:"
     for file in "${array[@]}"; do
       sha256sum "${file}"
     done
   } > "${log_file}"
 
-  ## jump back to further path
   cd "${current_path}" || exit 1
+  ## ################################
 }
 
 ## -------------------------------------------------------------------------- ##

@@ -12,25 +12,24 @@ source ./init
 ## FUNCTIONS:
 ## -------------------------------------------------------------------------- ##
 func_process(){
-
   ## generate part of directory: INITRD_INIT
   func_remove_archiv_file "${INITRD_INIT}.tar" "${TAR_COMPRESSION}"
   func_copy_dir "${WORKING_DIR_NAME}" "${INITRD_INIT}"
   func_archiv_handling "${INITRD_INIT}" "2" "d"
 
-  ## generate part of directory: INITRD_BASE
-  func_remove_archiv_file "${INITRD_BASE}.tar" "${TAR_COMPRESSION}"
-  func_copy_dir "${WORKING_DIR_NAME}" "${INITRD_BASE}"
-  func_remove_list_of_dirs "${INITRD_BASE}/${EXTRACT_DIR}" \
+  ## generate part of directory: INITRD_STRUCTURE
+  func_remove_archiv_file "${INITRD_STRUCTURE}.tar" "${TAR_COMPRESSION}"
+  func_copy_dir "${WORKING_DIR_NAME}" "${INITRD_STRUCTURE}"
+  func_remove_list_of_dirs "${INITRD_STRUCTURE}/${EXTRACT_DIR}" \
     "bin sbin usr/bin usr/sbin"
-  func_archiv_handling "${INITRD_BASE}" "2" "f"
+  func_archiv_handling "${INITRD_STRUCTURE}" "2" "f"
 
   ## generate part of directory: INITRD_BUSYBOX
   func_remove_archiv_file "${INITRD_BUSYBOX}.tar" "${TAR_COMPRESSION}"
-  func_copy_dir "${WORKING_DIR_NAME}/${EXTRACT_DIR}" "${INITRD_BUSYBOX}"
-  func_remove_list_of_dirs "${INITRD_BUSYBOX}" \
+  func_copy_dir "${WORKING_DIR_NAME}" "${INITRD_BUSYBOX}"
+  func_remove_list_of_dirs "${INITRD_BUSYBOX}/${EXTRACT_DIR}" \
     "dev etc info mnt mnt-system mnt-user modules proc ramdisk sys tmp UNIONFS"
-  func_archiv_handling "${INITRD_BUSYBOX}" "1" "f"
+  func_archiv_handling "${INITRD_BUSYBOX}" "2" "f"
 }
 
 func_remove_archiv_file(){ # tar_file_name="$1" comp_type="$2"

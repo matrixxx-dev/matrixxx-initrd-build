@@ -15,7 +15,7 @@ func_change_to_dir(){ # dir="$1"
   cd "$1" || exit 1
 }
 
-## make directory directory
+## make directory
 func_build_dir(){ # dir="$1"
   [ -d "$1" ] || mkdir -p "$1"
 }
@@ -119,18 +119,6 @@ func_tar_delete_files(){ #file_list="$1"; tar_file_name="$2"
   #echo "${cmd}"
   eval "${cmd}"
 }
-
-## create a file list
-func_build_list(){ # base_dir="$1"; save_list="$2"
-  local base_dir save_list
-  base_dir="$1"; save_list="$2"
-
-  for element in ${save_list}
-  do
-    file_list="${file_list} ${base_dir}/${element}"
-  done
-}
-
 
 ## ########################################################################## ##
 

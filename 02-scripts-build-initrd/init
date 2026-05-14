@@ -13,20 +13,16 @@
 ## -------------------------------------------------------------------------- ##
 CALLEE="false"
 
-## Select name
-#RD_DIR_NAME="matrixxx-1.0"
+## Build the WORKING_DIR_NAME
 RD_DIR_NAME="matrixxx-1.1"
 PREFIX="working-"
-
-## Directory: $WORKING_DIR_NAME
-#WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}"
-WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}.1"
-#WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}.2"
+SUB_VERSION="3"
+WORKING_DIR_NAME="${PREFIX}${RD_DIR_NAME}.${SUB_VERSION}"
 
 ## -------------------------------------------------------------------------- ##
-INITRD_BASE="initrd-${RD_DIR_NAME}_base"
+INITRD_INIT="initrd-matrixxx-init"
+INITRD_STRUCTURE="initrd-matrixxx-structure"
 INITRD_BUSYBOX="busybox-install"
-INITRD_INIT="initrd-matrixxx"
 
 ## -------------------------------------------------------------------------- ##
 BUILD_DIR="../build-initrd"

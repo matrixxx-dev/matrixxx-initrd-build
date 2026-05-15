@@ -8,8 +8,8 @@ toc: false
 #### '01-scripts-build-initrd-busybox': <a name="build-initrd-busybox"/>
 > [!CAUTION]
 > The copilation of (complete) busybox does not work with any kernel!
-> Linux kernel 6.8 removed a number of traffic control related symbols
-> Temporary workaround: the scripts remove tc from the build (for all kernels)
+> Linux kernel 6.8 removed a number of traffic control related symbols.
+> Temporary workaround: the scripts remove `tc` from the build (for all kernels)
 
 > [!NOTE]
 > The current configuration of busybox is oversized for the matrixxx

@@ -47,9 +47,4 @@ toc: false
 - script-del-working-link.sh
 
 ********************************************************************************
-#### Content of 'scripts-extract-initrd': <a name="extract-initrd"/>
-- **[dir]** originals
-- **01-script-extract_InitRD.sh**
-- init
-
 

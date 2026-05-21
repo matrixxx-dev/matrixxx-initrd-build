@@ -16,7 +16,7 @@ toc: false
   - This initramfs is specialized to mount
     - the USB-Stick (or similar) on which the initramfs is located (boot device)
     - an 'union-mouted-filesystem' in overlay structure
-      - consisting of a variety of writing-protected images (type of squasfs)
+      - consisting of a variety of writing-protected images (type of squashfs)
         and a layer above, which can be written
   - Furthermore, this initramfs is designed for (simple) remastering
 
